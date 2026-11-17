@@ -5,5 +5,5 @@ if [ -d "$STUBS" ]; then
   export LD_LIBRARY_PATH="$STUBS${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
 export ARABAWI_HOST="${ARABAWI_HOST:-0.0.0.0}"
-export ARABAWI_PORT="${ARABAWI_PORT:-8000}"
+export ARABAWI_PORT="${ARABAWI_PORT:-${PORT:-8000}}"
 exec python3 -m uvicorn server.main:app --host "$ARABAWI_HOST" --port "$ARABAWI_PORT"
