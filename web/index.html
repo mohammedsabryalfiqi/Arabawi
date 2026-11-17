@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>العرباوي — التعرف على الخطوط العربية من الصور</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark">ع</div>
+    <div>
+      <h1>العرباوي</h1>
+      <p>محرك التعرف على الخطوط العربية من الصور</p>
+    </div>
+  </div>
+  <span class="pill" id="healthPill">…</span>
+</header>
+
+<main>
+  <!-- ======================= المُعرِّف ======================= -->
+  <section class="card">
+    <div class="card-head">
+      <h2>تعريف الخط من صورة</h2>
+      <span class="tag">كلمة أو جملة كاملة — بلا تقطيع للحروف</span>
+    </div>
+
+    <div id="drop" class="drop">
+      <input type="file" id="file" accept="image/*" hidden>
+      <div class="drop-in">
+        <div class="drop-ico">⬆</div>
+        <b>أسقط صورة الكلمة أو الجملة هنا</b>
+        <span>أو انقر للاختيار — PNG / JPG / WEBP</span>
+      </div>
+    </div>
+
+    <div id="work" class="work" hidden>
+      <div class="previews">
+        <figure>
+          <figcaption>الصورة الأصلية</figcaption>
+          <img id="origImg" alt="الأصل">
+        </figure>
+        <figure>
+          <figcaption>بعد التحسين (تنظيف + تعتيم + تصحيح ميل)</figcaption>
+          <img id="enhImg" alt="المحسّنة">
+        </figure>
+      </div>
+
+      <div class="chips" id="metaChips"></div>
+
+      <div class="ocrrow" id="ocrRow">
+        <label for="textInput">نص الجملة كما قرأه التعرف الضوئي (قابل للتصحيح):</label>
+        <div class="ocrline">
+          <input id="textInput" type="text" placeholder="اكتب الجملة كاملة إن لم يتوفر التعرف الضوئي…">
+          <button id="matchBtn" class="btn">طابِق الخط</button>
+        </div>
+        <small id="ocrHint"></small>
+      </div>
+
+      <div id="results" class="results"></div>
+    </div>
+  </section>
+
+  <!-- ======================= المكتبة ======================= -->
+  <section class="card">
+    <div class="card-head">
+      <h2>مكتبة الخطوط على الخادم</h2>
+      <span class="tag" id="storageTag">…</span>
+    </div>
+
+    <div class="meter">
+      <div class="meter-bar"><div id="meterFill"></div></div>
+      <div class="meter-txt" id="meterTxt"></div>
+    </div>
+
+    <form id="fontForm" class="fontform">
+      <input type="file" id="fontFile" accept=".ttf,.otf,.woff,.woff2,.ttc" required>
+      <input type="text" id="fontName" placeholder="اسم العرض (اختياري)">
+      <input type="text" id="fontLicense" placeholder="الرخصة: حرة / استخدام شخصي…">
+      <input type="text" id="fontSource" placeholder="المصدر: مكتبة المالك…">
+      <button class="btn" type="submit">أضف الخط وحلّل محارفه</button>
+    </form>
+
+    <div class="table" id="fontTable"></div>
+  </section>
+</main>
+
+<footer>
+  أسماء الخطوط + معاينات حية · تُرسل أي ملف خط عند الطلب · التحليل على مستوى الكلمة والجملة
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
