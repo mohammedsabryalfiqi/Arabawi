@@ -1,0 +1,8 @@
+# محرك التعرف الضوئي الاختياري (EasyOCR + PyTorch CPU)
+# بعد التثبيت نفّذ: python3 tools/fetch_ocr_models.py
+# وفي بيئات CPU فقط قد تحتاج أدوات CPU stubs:
+#   python3 tools/make_cuda_stubs.py /opt/cudastubs
+#   export LD_LIBRARY_PATH=/opt/cudastubs
+easyocr>=1.7.2
+torch>=2.0
+torchvision>=0.15
