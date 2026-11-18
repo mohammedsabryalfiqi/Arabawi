@@ -28,6 +28,18 @@ FONTS = {
     "rakkas":    ["ofl/rakkas/Rakkas-Regular.ttf"],
     "mirza":     ["ofl/mirza/Mirza-Regular.ttf"],
     "katibeh":   ["ofl/katibeh/Katibeh-Regular.ttf"],
+    # الدفعة الثانية: عائلات أسطورية إضافية
+    "notokufiarabic": ["ofl/notokufiarabic/NotoKufiArabic[wght].ttf"],
+    "scheherazade":   ["ofl/scheherazadenew/ScheherazadeNew-Regular.ttf"],
+    "harmattan":      ["ofl/harmattan/Harmattan-Regular.ttf"],
+    "elmessiri":      ["ofl/elmessiri/ElMessiri[wght].ttf"],
+    "lemonada":       ["ofl/lemonada/Lemonada[wght].ttf"],
+    "markazitext":    ["ofl/markazitext/MarkaziText[wght].ttf"],
+    "lateef":         ["ofl/lateef/Lateef-Regular.ttf"],
+    "reemkufifun":    ["ofl/reemkufifun/ReemKufiFun[wght].ttf"],
+    "zain":           ["ofl/zain/Zain-Regular.ttf"],
+    "gulzar":         ["ofl/gulzar/Gulzar-Regular.ttf"],
+    "blaka":          ["ofl/blaka/Blaka-Regular.ttf"],
 }
 
 HERE = os.path.dirname(os.path.abspath(__file__))

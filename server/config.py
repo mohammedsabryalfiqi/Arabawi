@@ -27,7 +27,13 @@ STORAGE_QUOTA_GB = float(_env("ARABAWI_STORAGE_QUOTA_GB", "250"))
 MAX_UPLOAD_MB = float(_env("ARABAWI_MAX_UPLOAD_MB", "64"))
 
 HOST = _env("ARABAWI_HOST", "0.0.0.0")
-PORT = int(_env("ARABAWI_PORT", "8000"))
+# PORT: متغير المنفذ القياسي على Railway/هيروكو وغيرها
+PORT = int(_env("ARABAWI_PORT", os.environ.get("PORT", "8000")))
+
+# بوت تيليجرام: الرمز اختياري؛ إن غاب يعمل الموقع بدون بوت
+TELEGRAM_BOT_TOKEN = _env("ARABAWI_TELEGRAM_BOT_TOKEN", "")
+# معرف المالك الوحيد المسموح له رفع الخطوط عبر تيليجرام
+OWNER_TG_ID = int(_env("ARABAWI_OWNER_TG_ID", "5231453921"))
 
 WEB_DIR = os.path.join(BASE_DIR, "web")
 

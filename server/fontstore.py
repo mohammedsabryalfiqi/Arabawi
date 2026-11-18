@@ -20,6 +20,20 @@ from . import config
 from .render import get_renderer
 
 _LOCK = threading.Lock()
+_LISTENERS: list = []  # خطافات أحداث (مثل إشعار بوت تيليجرام عند إضافة خط)
+
+
+def on_font_added(fn) -> None:
+    """يسجّل دالة تستدعى بعد كل إضافة خط ناجحة: fn(record_dict)."""
+    _LISTENERS.append(fn)
+
+
+def _notify_added(rec: dict) -> None:
+    for fn in list(_LISTENERS):
+        try:
+            fn(rec)
+        except Exception:
+            pass
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS fonts (
@@ -128,7 +142,9 @@ def add_font(data: bytes, filename: str, license_: str = "", source: str = "مك
             (fid, name, analysis.get("family", ""), analysis.get("style", ""),
              license_ or "غير محددة", source, filename, sha, len(data), path,
              time.time(), status, json.dumps(analysis, ensure_ascii=False)))
-    return get_font(fid)
+    rec = get_font(fid)
+    _notify_added(rec)
+    return rec
 
 
 def delete_font(font_id: str) -> bool:

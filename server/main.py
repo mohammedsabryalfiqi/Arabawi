@@ -43,6 +43,11 @@ def _startup() -> None:
     n = fontstore.scan_inbox()
     if n:
         print(f"[arabawi] التُقط {n} خطًا من صندوق الوارد")
+    try:
+        from . import telegram_bot
+        telegram_bot.start()
+    except Exception as e:  # البوت اختياري أبدًا
+        print("[arabawi] تعذّر تشغيل البوت:", e)
 
 
 @app.get("/api/health")
