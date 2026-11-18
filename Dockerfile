@@ -1,6 +1,7 @@
 # خادم العرباوي — التعرف على الخطوط العربية من الصور
 # البناء:  docker build -t arabawi .
 # التشغيل: docker run -p 8000:8000 -v arabawi_data:/app/data -e ARABAWI_STORAGE_QUOTA_GB=500 arabawi
+# على Railway: أرفق Volume بمسار التركيب /app/data للحفاظ على البيانات
 FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -21,7 +22,6 @@ ENV ARABAWI_DATA_DIR=/app/data
 ENV ARABAWI_STORAGE_QUOTA_GB=500
 ENV ARABAWI_HOST=0.0.0.0
 ENV ARABAWI_PORT=8000
-VOLUME /app/data
 EXPOSE 8000
 
 # نزّل نماذج OCR عند أول إقلاع إن غابت (يتجاهل الفشل بصمت)
