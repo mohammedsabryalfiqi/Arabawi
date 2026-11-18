@@ -39,7 +39,7 @@ def main() -> None:
                 f.write(data)
         os.remove(zpath)
         print("✓", name, f"{len(data)/1e6:.1f} MB")
-    print("تم. أعد تشغيل الخادم ليتفعّل محرك OCR.")
+    print("تم. إن كان الخادم يعمل بالفعل أثناء التنزيل فأعد تشغيله؛ وإلا فالمحرك يتفعّل تلقائيًا عند الإقلاع.")
 
 
 if __name__ == "__main__":

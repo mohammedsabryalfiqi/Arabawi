@@ -376,7 +376,7 @@ def start() -> bool:
     """يطلق البوت في خيط مستقل. يعيد False إن لم يُضبط الرمز."""
     token = config.TELEGRAM_BOT_TOKEN
     if not token:
-        print("[arabawi] بوت تيليجرام معطّل (لم يُضبط ARABAWI_TELEGRAM_BOT_TOKEN)")
+        print("[arabawi] بوت تيليجرام معطّل (لم يُضبط ARABAWI_TELEGRAM_BOT_TOKEN)", flush=True)
         return False
 
     def _thread():
@@ -386,9 +386,12 @@ def start() -> bool:
             app = _build_app(token)
             app.post_init = _post_init
             fontstore.on_font_added(_web_added_listener)
-            app.run_polling(drop_pending_updates=True)
+            # stop_signals=None ضروري: تسجيل إشارات النظام لا يعمل خارج الخيط الرئيسي
+            app.run_polling(drop_pending_updates=True, stop_signals=None)
         except Exception as e:  # لا يُسقط الخادم أبدًا
-            print("[arabawi] توقف البوت:", type(e).__name__, e)
+            import traceback
+            print("[arabawi] توقف البوت:", type(e).__name__, e, flush=True)
+            traceback.print_exc()
 
     t = threading.Thread(target=_thread, name="arabawi-tg-bot", daemon=True)
     t.start()

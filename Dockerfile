@@ -18,6 +18,7 @@ COPY . .
 # مكتبات CUDA وهمية لتشغيل PyTorch على CPU داخل الحاوية
 RUN python3 tools/make_cuda_stubs.py /opt/cudastubs || true
 ENV LD_LIBRARY_PATH=/opt/cudastubs
+ENV PYTHONUNBUFFERED=1
 ENV ARABAWI_DATA_DIR=/app/data
 ENV ARABAWI_STORAGE_QUOTA_GB=500
 ENV ARABAWI_HOST=0.0.0.0
